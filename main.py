@@ -1,9 +1,7 @@
 from flask import Flask, render_template
-fromflask_sqlalchemy imprt SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQL_ALCHEMY_DATABASE_URI'] = 'sqlite:///Book.sqlite3'
-db = SQLALchemy(app)
 
 
 class Book(db.Model):
@@ -15,11 +13,9 @@ class Book(db.Model):
         self.author = author
 
 
-
 @app.route('/book')
 def book():
     render_template("index.html", Book=Book.query.all())
-
 
 
 if __name__ == "__main__":
